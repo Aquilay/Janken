@@ -1,64 +1,52 @@
-<!DOCTYPE html>>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title>Janken</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye&family=Ribeye+Marrow&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
+<body>
+    <div id="banner-top">
+        <h1>WELCOME TO JANKEN !</h1>
+        <h2>ROCK-PAPER-SCISSORS IN JAVASCRIPT - BY AYMANE FERHANE</h2>
+    </div>
 
-
-<!-- This is the game code -->
-<script>
+    <div id="scoreboard">
+        <div id="display">
+            <img src="resources/fist.svg" class="scoreboard-img" id="player-image"></img>
+            <p id="vs-text">VS</p>
+            <img src="resources/scissors.svg" class="scoreboard-img" id="computer-image"></img>
+        </div>
+        <div id="scoreboard-text">
+            <div id="player-text">
+                <p>PLAYER</p>
+                <p id="player-score">0</p>
+            </div>
+            <div id="computer-text">
+                <p id="computer-score">0</p>
+                <p>COMPUTER</p>
+            </div>
+        </div>
+        <p id="result-text">Choose your weapon.</p>
+    </div>
     
-function computerPlay () {
-    let randomNumber = Math.floor(Math.random() * 3) + 1;
-    switch (randomNumber) {
-        case 1 :
-            return "Rock";
-            break;
-        case 2 :
-            return "Paper";
-            break;
-        case 3:
-            return "Scissors";
-            break;
-    }
-}
+    <div id="banner-bottom">
+        <img src="resources/fist.svg" class="choice-icon" id="rock"/>
+        <img src="resources/hand.svg" class="choice-icon" id="paper"/>
+        <img src="resources/scissors.svg" class="choice-icon" id="scissors"/>
+    </div>
 
-function calculateResult(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toUpperCase();
-    computerSelection = computerSelection.toUpperCase();
-
-    if ((playerSelection == "ROCK" && computerSelection == "SCISSORS")
-        || (playerSelection == "PAPER" && computerSelection == "ROCK")
-        || (playerSelection == "SCISSORS" && computerSelection == "PAPER")) {
-
-        return `You win, ${playerSelection.toLowerCase()} beats ${computerSelection.toLowerCase()} !`;
-
-        }
-    else if (playerSelection == computerSelection) {
-        return 'Draw !';
-    }
-    else {
-        return `You lose, ${computerSelection.toLowerCase()} beats ${playerSelection.toLowerCase()} !`;
-    }
-}
-
-function game() {
-    for (let i=0; i <= 5; i++) {
-        let computerChoice = computerPlay();
-        let playerChoice = prompt("What do you play? (Rock, Paper or Scissors) : ");
-
-        if (playerChoice.toUpperCase() == "ROCK" || playerChoice.toUpperCase() == "PAPER" || playerChoice.toUpperCase() == "SCISSORS" ) {
-            alert(`Round ${i}: ${calculateResult(playerChoice, computerChoice)}`);
-        }
-        else {
-            i--;
-        }
-    }
-
-}
-
-game();
-alert("Game Over");
+</body>
 
 
-</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="script.js"></script>

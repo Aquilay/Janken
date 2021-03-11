@@ -1,0 +1,64 @@
+<!DOCTYPE html>>
+<head>
+    <meta charset="utf-8">
+    <title>Janken</title>
+</head>
+
+
+<!-- This is the game code -->
+<script>
+    
+function computerPlay () {
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
+    switch (randomNumber) {
+        case 1 :
+            return "Rock";
+            break;
+        case 2 :
+            return "Paper";
+            break;
+        case 3:
+            return "Scissors";
+            break;
+    }
+}
+
+function calculateResult(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toUpperCase();
+    computerSelection = computerSelection.toUpperCase();
+
+    if ((playerSelection == "ROCK" && computerSelection == "SCISSORS")
+        || (playerSelection == "PAPER" && computerSelection == "ROCK")
+        || (playerSelection == "SCISSORS" && computerSelection == "PAPER")) {
+
+        return `You win, ${playerSelection.toLowerCase()} beats ${computerSelection.toLowerCase()} !`;
+
+        }
+    else if (playerSelection == computerSelection) {
+        return 'Draw !';
+    }
+    else {
+        return `You lose, ${computerSelection.toLowerCase()} beats ${playerSelection.toLowerCase()} !`;
+    }
+}
+
+function game() {
+    for (let i=0; i <= 5; i++) {
+        let computerChoice = computerPlay();
+        let playerChoice = prompt("What do you play? (Rock, Paper or Scissors) : ");
+
+        if (playerChoice.toUpperCase() == "ROCK" || playerChoice.toUpperCase() == "PAPER" || playerChoice.toUpperCase() == "SCISSORS" ) {
+            alert(`Round ${i}: ${calculateResult(playerChoice, computerChoice)}`);
+        }
+        else {
+            i--;
+        }
+    }
+
+}
+
+game();
+alert("Game Over");
+
+
+</script>
